@@ -1,0 +1,40 @@
+@use "variables" as *;
+
+@mixin vp-1023 {
+  @media (max-width: $vp-tablet) {
+    @content;
+  }
+}
+
+@mixin vp-767 {
+  @media (max-width: $vp-mobile) {
+    @content;
+  }
+}
+
+@mixin marusia-gradient {
+  background:
+    linear-gradient(178.73deg, $blue-light -17.53%, $purple-light 131.74%),
+    linear-gradient(180deg, $color-black 0%, $dark-end 100%);
+  background-repeat: no-repeat;
+}
+
+@mixin socials-iconDesktop-footer {
+  display: block;
+  width: 36px;
+  height: 36px;
+  background-color: $color-white;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-position: center;
+  mask-position: center;
+
+  @include vp-767 {
+    width: 24px;
+    height: 24px;
+  }
+}
