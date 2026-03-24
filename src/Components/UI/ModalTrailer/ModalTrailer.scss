@@ -1,0 +1,52 @@
+.trailer-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  pointer-events: auto;
+  overflow: hidden;
+
+  &__content {
+    position: relative;
+    width: 80%;
+    max-width: 1000px;
+    background-color: #000;
+    border-radius: 18px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    pointer-events: auto;
+
+  }
+
+  &__close {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    background: $color-white;
+    border: none;
+    color: $color-black;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    @include vp-767 {
+      right: 0;
+    }
+  }
+}
