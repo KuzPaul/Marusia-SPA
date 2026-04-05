@@ -1,0 +1,94 @@
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &__logo-name,
+  &__logo-email {
+    background-color: $color-light;
+    padding: 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__logo-email {
+    padding: 18px;
+  }
+  &__email-icon {
+    color: $color-white;
+  }
+  &__firstNameSurname,
+  &__currentNameSurname,
+  &__currentEmail {
+    font-size: 24px;
+    line-height: 32px;
+    color: $color-white;
+    font-weight: 700;
+
+    @include vp-767 {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+  &__block-email,
+  &__block-name {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__block-name {
+    margin: 0 0 40px;
+  }
+
+  &__block-email {
+    margin: 0 0 64px;
+
+    @include vp-767 {
+      margin: 0 0 40px;
+    }
+  }
+
+  &__text {
+    font-size: 18px;
+    line-height: 24px;
+    color: $color-white;
+
+    @include vp-767 {
+      font-size: 14px;
+      line-height: 20px;
+      color: $color-light;
+    }
+  }
+  &__current {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__logout {
+    font-size: 18px;
+    line-height: 24px;
+    padding: 16px 48px;
+    border-radius: 28px;
+    color: $color-white;
+    background-color: $blue-mid;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      background-color: $silver-rating;
+      color: $color-light;
+    }
+
+    @include vp-767 {
+      width: 100%;
+      &:hover {
+        background-color: unset;
+        color: unset;
+      }
+    }
+  }
+}
