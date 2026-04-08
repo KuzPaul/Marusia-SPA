@@ -1,0 +1,11 @@
+.info-page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin: 0 0 120px;
+
+  @include vp-767 {
+    gap: 56px;
+    margin: 0 0 32px;
+  }
+}
