@@ -1,0 +1,135 @@
+.header-search {
+  &__list {
+    position: absolute;
+    z-index: 10;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    right: 0;
+    top: 55px;
+
+    background-color: $gray-mid;
+    width: 559px;
+    height: auto;
+    padding: 28px 16px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include vp-767 {
+      padding: 24px 20px;
+      width: 100%;
+      flex-direction: row;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      gap: 16px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include vp-767 {
+      max-width: 220px;
+      flex-shrink: 0;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  &__main {
+    display: flex;
+    gap: 12px;
+
+    @include vp-767 {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__year,
+  &__timeWatch,
+  &__genre {
+    color: $color-light;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  &__rating {
+    color: $color-white;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 16px;
+    max-width: 47px;
+
+    &--red {
+      background-color: $red-rating;
+    }
+
+    &--silver {
+      background-color: $silver-rating;
+    }
+
+    &--green {
+      background-color: $green-rating;
+    }
+
+    &--gold {
+      background-color: $gold-rating;
+    }
+  }
+
+  &__rating-icon {
+    flex-shrink: 0;
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: $color-white;
+
+    -webkit-mask-image: url("src/assets/icons/starRating.svg");
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+
+    mask-image: url("src/assets/icons/starRating.svg");
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+  }
+
+  &__img-home {
+    width: 40px;
+    height: 52px;
+
+    @include vp-767 {
+      width: 158px;
+      height: 206px;
+    }
+  }
+
+  &__title {
+    font-size: 18px;
+    line-height: 24px;
+    color: $color-white;
+    margin: 0;
+  }
+}
