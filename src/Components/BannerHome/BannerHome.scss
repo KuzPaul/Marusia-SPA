@@ -1,0 +1,220 @@
+.home-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include vp-1023 {
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__main {
+    display: flex;
+    gap: 16px;
+    margin: 0 0 16px;
+
+    @include vp-767 {
+      align-items: center;
+      margin: 0 0 12px;
+    }
+  }
+
+  &__rating {
+    color: $color-white;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    border-radius: 16px;
+
+    &--red {
+      background-color: $red-rating;
+    }
+
+    &--silver {
+      background-color: $silver-rating;
+    }
+
+    &--green {
+      background-color: $green-rating;
+    }
+
+    &--gold {
+      background-color: $gold-rating;
+    }
+  }
+
+  &__rating-icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-color: $color-white;
+
+    -webkit-mask-image: url("src/assets/icons/starRating.svg");
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+
+    mask-image: url("src/assets/icons/starRating.svg");
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+  }
+
+  &__year,
+  &__timeWatch,
+  &__genre {
+    color: $color-light;
+    font-size: 18px;
+    line-height: 24px;
+
+    @include vp-767 {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  &__title {
+    font-size: 48px;
+    line-height: 56px;
+    color: $color-white;
+    margin: 0 0 16px;
+
+    @include vp-767 {
+      margin: 0 0 16px;
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  &__description {
+    font-size: 24px;
+    line-height: 32px;
+    margin: 0 0 60px;
+    color: $color-light;
+
+    @include vp-767 {
+      margin: 0 0 32px;
+      line-height: 24px;
+      font-size: 18px;
+    }
+  }
+
+  &__picture {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 680px;
+    aspect-ratio: 680 / 552;
+
+    @include vp-767 {
+      aspect-ratio: 0;
+    }
+  }
+
+  &__img-home {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+
+    @include vp-767 {
+      min-width: 338px;
+      height: 234px;
+    }
+  }
+
+  &__interactive {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    @include vp-767 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+  &__trailer,
+  &__info-btn {
+    padding: 16px 48px;
+    border-radius: 28px;
+    color: $color-white;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    transition: all 0.3s ease;
+  }
+
+  &__info-btn {
+    @include vp-767 {
+      width: 167px;
+    }
+  }
+
+  &__trailer {
+    background-color: $blue-mid;
+
+    &:hover {
+      background-color: $blue-mid-hover;
+      color: $color-light;
+    }
+
+    @include vp-767 {
+      width: 100%;
+      grid-column: span 3;
+
+      &.grid2 {
+        width: 251px;
+        grid-column: span 2;
+      }
+    }
+  }
+
+  &__info-btn,
+  &__favorites-btn,
+  &__film-random {
+    background-color: $gray-mid;
+    border: 1px solid $shadow-dark;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: $silver-rating;
+      color: $color-light;
+    }
+  }
+
+  &__favorites-btn,
+  &__film-random {
+    width: 68px;
+    height: 58px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 28px;
+  }
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+    animation: fadeIn 0.3s ease;
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
+}
