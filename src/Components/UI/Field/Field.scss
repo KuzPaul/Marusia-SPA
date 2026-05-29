@@ -1,0 +1,53 @@
+.field {
+  &__wrapper {
+    position: relative;
+    &:hover {
+      .field__input {
+        border-color: $blue-mid;
+      }
+
+      .field__icon {
+        color: $blue-mid;
+      }
+    }
+    &:focus-within:not(.error) {
+      .field__input {
+        border-color: $blue-mid;
+      }
+      .field__icon {
+        color: $blue-mid;
+      }
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    pointer-events: none;
+    color: $dark-border;
+    transition: color 0.3s ease-in;
+    &--error {
+      color: $red-error;
+    }
+  }
+
+  &__input {
+    cursor: pointer;
+    margin: 0;
+    padding: 16px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid $dark-border;
+    transition: border-color 0.3s ease-in;
+    outline: none;
+
+    &--error {
+      border: 1px solid $red-error;
+    }
+
+    &--icon {
+      padding-left: 52px;
+    }
+  }
+}
