@@ -1,0 +1,22 @@
+# 1. Зависимости
+node_modules/
+
+# 2. Папка сборки
+dist/
+dist-ssr/
+*.local
+
+# 3. Кеши
+.cache/
+.eslintcache
+*.log
+npm-debug.log*
+
+# 4. Переменные окружения
+.env
+.env.local
+.env.*.local
+
+# 5. Системные файлы ОС
+.DS_Store
+Thumbs.db
