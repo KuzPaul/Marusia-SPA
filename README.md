@@ -119,6 +119,3 @@ npm run test
 | | |
 |---|---|
 | **Автор** | Павел Кузнецов |
-| **GitHub** | [KuzPaul](https://github.com/KuzPaul) |
-| **Email** | [kuzn-25@mail.ru](mailto:kuzn-25@mail.ru) |
-| **Telegram** | [@kuzy39](https://t.me/kuzy39) |
