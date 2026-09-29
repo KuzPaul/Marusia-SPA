@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { useFavorite } from "../../hooks/useFavorite";
-import { useUser } from "../../hooks/useUser";
-import { Button } from "../../Components/UI/Button";
-import IconFavorite from "../../assets/icons/likeFilm.svg?react";
-import IconProfile from "../../assets/icons/icon-profile.svg?react";
-import "./UserAccountPage.scss";
-import { useQueryMedia } from "../../hooks/useQueryMedia";
-import { InfoUser } from "../../Components/InfoUser";
-import { FavoriteMovies } from "../../Components/FavoriteMovies";
+import { useFavorite } from "@/modules/movies/hooks/useFavorite";
+import { useUser } from "@/modules/auth/hooks/useUser";
+import { Button } from "@/shared/ui/Button";
+import IconFavorite from "@/assets/icons/likeFilm.svg?react";
+import IconProfile from "@/assets/icons/icon-profile.svg?react";
+import { useQueryMedia } from "@/shared/lib/useQueryMedia";
+import { InfoUser } from "@/modules/profile";
+import { FavoriteMovies } from "@/modules/movies";
+import { cn } from "@/shared/lib/cn";
+import styles from "./UserAccountPage.module.scss";
 
 export const UserAccountPage = () => {
   const [stateProfile, setProfile] = useState<"favorite" | "info">("favorite");
@@ -21,27 +22,39 @@ export const UserAccountPage = () => {
   ];
 
   return (
-    <div className="user-profile">
-      <div className="user-profile__block">
-        <h1 className="user-profile__title">Мой аккаунт</h1>
-        <nav className="user-profile__nav">
+    <div className={styles["user-profile"]}>
+      <div className={styles["user-profile__block"]}>
+        <h1 className={styles["user-profile__title"]}>Мой аккаунт</h1>
+        <nav className={styles["user-profile__nav"]}>
           <Button
-            className={`user-profile__btn ${stateProfile === "favorite" ? "active" : ""} button `}
+            className={cn(
+              styles["user-profile__btn"],
+              stateProfile === "favorite" && styles.active,
+              "button",
+            )}
             onClick={() => setProfile("favorite")}
             aria-label="кнопка избранных фильмов"
             data-name="favorite"
           >
-            <IconFavorite className="user-profile__icon" />
-            <span className="user-profile__btn-text">{favoriteText}</span>
+            <IconFavorite className={styles["user-profile__icon"]} />
+            <span className={styles["user-profile__btn-text"]}>
+              {favoriteText}
+            </span>
           </Button>
           <Button
-            className={`user-profile__btn ${stateProfile === "info" ? "active" : ""} button `}
+            className={cn(
+              styles["user-profile__btn"],
+              stateProfile === "info" && styles.active,
+              "button",
+            )}
             onClick={() => setProfile("info")}
             aria-label="кнопка настройки аккаунта"
             data-name="info"
           >
-            <IconProfile className="user-profile__icon" />
-            <span className="user-profile__btn-text">{settingsText}</span>
+            <IconProfile className={styles["user-profile__icon"]} />
+            <span className={styles["user-profile__btn-text"]}>
+              {settingsText}
+            </span>
           </Button>
         </nav>
       </div>

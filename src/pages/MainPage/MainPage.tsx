@@ -1,19 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { queryKeys } from "../../api/queryKeys";
-import { getMoviesTop, getRandomMovie } from "../../api/getMovies";
-import { BannerHome } from "../../Components/BannerHome";
-import { MoviesTop } from "../../Components/MoviesTop";
-import { Loader } from "../../Components/UI/Loader";
-import "./MainPage.scss";
+import { queryKeys } from "@/shared/api/queryKeys";
+import { getMoviesTop, getRandomMovie } from "@/modules/movies/api/getMovies";
+import { BannerHome, MoviesTop } from "@/modules/movies";
+import { Loader } from "@/shared/ui/Loader";
+import styles from "./MainPage.module.scss";
 
 export const MainPage = () => {
-  const {
-    data,
-    isFetching,
-    isPending,
-    isError,
-    refetch,
-  } = useQuery({
+  const { data, isFetching, isPending, isError, refetch } = useQuery({
     queryFn: () => getRandomMovie(),
     queryKey: queryKeys.randomMovie,
   });
@@ -30,11 +23,11 @@ export const MainPage = () => {
 
   return (
     <>
-      <section className="main-page">
+      <section className={styles["main-page"]}>
         {isPending ? (
           <Loader />
         ) : isError || !data ? (
-          <p className="main-page__error" role="alert">
+          <p className={styles["main-page__error"]} role="alert">
             Не удалось загрузить фильм.{" "}
             <button type="button" onClick={() => refetch()}>
               Повторить
@@ -47,7 +40,7 @@ export const MainPage = () => {
       {isTopPending ? (
         <Loader />
       ) : isTopError || !moviesTop ? (
-        <p className="main-page__error" role="alert">
+        <p className={styles["main-page__error"]} role="alert">
           Не удалось загрузить топ-10.{" "}
           <button type="button" onClick={() => refetchTop()}>
             Повторить

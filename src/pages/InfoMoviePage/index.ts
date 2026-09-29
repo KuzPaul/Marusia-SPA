@@ -1,1 +1,1 @@
-export * from "./InfoMoviePage.tsx";
+export { InfoMoviePage } from "./InfoMoviePage.tsx";
