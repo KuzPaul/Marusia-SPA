@@ -41,6 +41,13 @@ export const Header = (): ReactElement => {
     debouncedSearch(value);
   };
 
+  const closeSearch = () => {
+    debouncedSearch.cancel();
+    setTitle("");
+    setDebouncedTitle("");
+    setActive(false);
+  };
+
   const { userInfo, isPending } = useUser();
 
   return (
@@ -48,7 +55,10 @@ export const Header = (): ReactElement => {
       <div className="container">
         <div className={styles.header__top}>
           {activeFrom || statusAuth ? (
-            <div className={styles.header__overlay}></div>
+            <div
+              className={styles.header__overlay}
+              onClick={activeFrom ? closeSearch : undefined}
+            />
           ) : (
             ""
           )}
@@ -82,6 +92,7 @@ export const Header = (): ReactElement => {
               styles["header__search-form"],
               activeFrom && styles.active,
             )}
+            onSubmit={(e) => e.preventDefault()}
           >
             <input
               className={styles.header__search}
@@ -95,10 +106,7 @@ export const Header = (): ReactElement => {
               }
             />
             {title && debouncedTitle ? (
-              <WidgetSearch
-                title={debouncedTitle}
-                setTitle={setDebouncedTitle}
-              />
+              <WidgetSearch title={debouncedTitle} onSelect={closeSearch} />
             ) : (
               ""
             )}
@@ -109,12 +117,9 @@ export const Header = (): ReactElement => {
             />
             <Button
               className={cn("button", styles["header__search-reset"])}
-              type="reset"
-              aria-label="стереть"
-              onClick={() => {
-                setTitle("");
-                setDebouncedTitle("");
-              }}
+              type="button"
+              aria-label="закрыть поиск"
+              onClick={closeSearch}
             >
               <IconReset width={24} height={24} />
             </Button>

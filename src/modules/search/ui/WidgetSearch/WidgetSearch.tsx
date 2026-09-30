@@ -10,7 +10,7 @@ import styles from "./WidgetSearch.module.scss";
 
 interface titleProps {
   title: string;
-  setTitle: (title: string) => void;
+  onSelect: () => void;
 }
 
 const ratingToneClass = {
@@ -20,7 +20,7 @@ const ratingToneClass = {
   gold: styles["header-search__rating--gold"],
 };
 
-export const WidgetSearch: FC<titleProps> = ({ title, setTitle }) => {
+export const WidgetSearch: FC<titleProps> = ({ title, onSelect }) => {
   const navigate = useNavigate();
 
   const { data } = useQuery({
@@ -30,7 +30,7 @@ export const WidgetSearch: FC<titleProps> = ({ title, setTitle }) => {
 
   const movies = data;
   const handelNavigate = (id: number) => {
-    setTitle("");
+    onSelect();
     navigate(`/movie/${id}`);
   };
 

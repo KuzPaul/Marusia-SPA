@@ -33,7 +33,7 @@
 
 | Слой | Технологии |
 |------|------------|
-| UI | React 19, SCSS |
+| UI | React 19, SCSS (CSS Modules) |
 | Сборка | Vite 8, TypeScript 5.9 |
 | Маршруты | React Router 7 |
 | Данные | TanStack Query 5, Fetch (`credentials: include`) |
@@ -73,26 +73,23 @@ npm run test:watch
 
 ## Архитектура (кратко)
 
-- **`src/api/`** — HTTP-запросы и `queryKeys` для TanStack Query
-- **`src/routing/ProtectedRoute`** — доступ к `/profile` только после авторизации
-- **`src/utils/queryClient.ts`** — общие настройки кэша и retry
-- **`src/ErrorBoundary.tsx`** — перехват падений UI
+- **`src/modules/`** — фичи: auth, movies, profile, search
+- **`src/shared/`** — UI-kit, типы, `queryKeys`, утилиты
+- **`src/app/routing/ProtectedRoute`** — доступ к `/profile` только после авторизации
+- **`src/shared/lib/queryClient.ts`** — общие настройки кэша и retry
+- **`src/app/ErrorBoundary.tsx`** — перехват падений UI
 
 ## Структура
 
 ```
 src/
-├── api/              # запросы к API, queryKeys
-├── routing/          # ProtectedRoute
-├── Components/       # UI, layout, формы
-├── constants/
-├── hooks/
-├── pages/
-├── types/
-├── utils/
-├── widgets/
+├── app/              # App, ErrorBoundary, ProtectedRoute
+├── layout/           # шапка, подвал, каркас
+├── modules/          # auth, movies, profile, search
+├── pages/            # страницы маршрутов
+├── shared/           # UI, типы, api, утилиты
+├── assets/
 ├── test/             # setup для Vitest
-├── App.tsx
 └── main.tsx
 ```
 
