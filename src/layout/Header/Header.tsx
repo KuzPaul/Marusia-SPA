@@ -101,6 +101,7 @@ export const Header = (): ReactElement => {
               name="search"
               id="search"
               value={title}
+              autoComplete="off"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 handleChange(e)
               }
@@ -119,7 +120,11 @@ export const Header = (): ReactElement => {
               className={cn("button", styles["header__search-reset"])}
               type="button"
               aria-label="закрыть поиск"
-              onClick={closeSearch}
+              onPointerDown={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                closeSearch();
+              }}
             >
               <IconReset width={24} height={24} />
             </Button>
